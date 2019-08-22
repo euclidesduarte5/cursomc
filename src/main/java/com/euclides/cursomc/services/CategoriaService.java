@@ -2,6 +2,7 @@ package com.euclides.cursomc.services;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,10 @@ public class CategoriaService {
 	public Categoria buscar(Integer id) {
 		
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElse(null);
-		
+		return obj.orElseThrow(() -> new com.euclides.cursomc.services.exceptions.ObjectNotFoundException(
+				"Objeto não encontrado! "+ id + ", Tipo: " + Categoria.class.getName()));
+				
+	
 	}
 
 }
