@@ -32,7 +32,7 @@ public class Produto implements Serializable {
 	
 
 	
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "Produto_Categoria",
 	joinColumns = @JoinColumn(name = "produto_id"),
