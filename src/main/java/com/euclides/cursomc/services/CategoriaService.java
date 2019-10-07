@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.euclides.cursomc.domain.Categoria;
 import com.euclides.cursomc.repositories.CategoriaRepository;
 
+import net.bytebuddy.asm.Advice.Return;
+
 @Service
 public class CategoriaService {
 	
@@ -22,6 +24,10 @@ public class CategoriaService {
 				"Objeto não encontrado! "+ id + ", Tipo: " + Categoria.class.getName()));
 				
 	
+	}
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
 	}
 
 }
